@@ -40,8 +40,8 @@
       --bg-2:    #1A1A1A;
       --bg-3:    #222222;
       --text:    #E8E5DF;
-      --muted:   #8A867E;
-      --dim:     #2E2C29;
+      --muted:   #A9A59C;
+      --dim:     #746F67;
       --y:       #F5E642;
       --y-dim:   rgba(245,230,66,.10);
       --border:  rgba(255,255,255,.08);
@@ -234,7 +234,7 @@
       66%      { transform: translate(-3%, 3%) scale(.95); opacity: .5; }
     }
 
-    /* Plovoucí žluté tečky — canvas particles */
+ /* Plovoucí žluté tečky — canvas particles */
     #hero-canvas {
       position: absolute; inset: 0; z-index: 1;
       pointer-events: none;
@@ -244,6 +244,7 @@
       display: none;
       position: absolute; border-radius: 50%;
       background: var(--y); pointer-events: none; z-index: 1;
+      box-shadow: 0 0 10px 2px rgba(245,230,66,.45);
     }
 
     .hero-c {
@@ -915,7 +916,7 @@
       <p class="stat-lbl">od konzultace po spuštění</p>
     </div>
     <div class="stat" data-r data-d="2">
-      <div class="stat-n"><span class="cnt" data-t="9900">0</span><span class="stat-sfx">Kč</span></div>
+      <div class="stat-n"><span class="cnt" data-t="9910">0</span><span class="stat-sfx">Kč</span></div>
       <p class="stat-lbl">cena za kompletní web</p>
     </div>
     <div class="stat" data-r data-d="4">
@@ -946,7 +947,7 @@
           <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
         </div>
         <h3>Zákazník přijde z mobilu. Odejde s vaším číslem.</h3>
-        <p>68 % zákazníků přijde z telefonu. Navrhujeme mobile-first — rychlý, přehledný, bez tření od prvního scrollu.</p>
+        <p>Přes 60 % zákazníků přijde z telefonu. Navrhujeme mobile-first — rychlý, přehledný, bez tření od prvního scrollu.</p>
       </article>
       <article class="usp-c" data-r data-d="3">
         <div class="usp-ico">
@@ -976,7 +977,7 @@
             <svg class="acc-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="acc-b" id="acc-b1">
-            <p class="acc-bi">Návštěvník si udělá názor za 0,05 sekundy. Zastaralý design = nedůvěryhodný byznys. Ani sebevětší sleva to nezachrání.</p>
+            <p class="acc-bi">Návštěvník si udělá názor za 3 sekundy. Zastaralý design = nedůvěryhodný byznys. Ani sebevětší sleva to nezachrání.</p>
           </div>
         </div>
         <div class="acc" data-r data-d="2">
@@ -986,7 +987,7 @@
             <svg class="acc-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="acc-b" id="acc-b2">
-            <p class="acc-bi">68 % zákazníků přichází z telefonu. Pokud web nefunguje na mobilu, jednoduše odcházejí ke konkurenci, která funguje.</p>
+            <p class="acc-bi">Přes 60 % zákazníků přichází z telefonu. Pokud web nefunguje na mobilu, jednoduše odcházejí ke konkurenci, která funguje.</p>
           </div>
         </div>
         <div class="acc" data-r data-d="3">
@@ -1186,8 +1187,8 @@
 
       <div class="price-c" data-r data-d="1">
         <div class="price-badge price-badge--gh">Akční cena — −34 %</div>
-        <div class="price-name">Jednorázový web</div>
-        <div class="price-desc">Profesionální web na míru od prvního návrhu po spuštění — hotový za 14 dní.</div>
+        <div class="price-name">Jednostránkový web</div>
+        <div class="price-desc">Profesionální web na míru — vše podstatné na jedné přehledné stránce. Od návrhu po spuštění za 14 dní.</div>
         <div class="price-row">
           <span class="price-big">9 900</span>
           <span class="price-cur">Kč</span>
@@ -1213,7 +1214,7 @@
         </div>
         <div class="price-plus">+ 490 Kč / měs za správu</div>
         <div class="price-feats">
-          <div class="price-feat"><div class="price-chk">✓</div> Vše z jednorázového webu</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Vše z jednostránkového webu</div>
           <div class="price-feat"><div class="price-chk">✓</div> Hosting v ceně</div>
           <div class="price-feat"><div class="price-chk">✓</div> Pravidelné aktualizace</div>
           <div class="price-feat"><div class="price-chk">✓</div> Technická podpora</div>
@@ -1225,21 +1226,20 @@
 
       <div class="price-c" data-r data-d="3">
         <div class="price-sp"></div>
-        <div class="price-name">Měsíční správa</div>
-        <div class="price-desc">Starost o web za vás — hosting, aktualizace a technická podpora každý měsíc.</div>
+        <div class="price-name">Rozsáhlejší projekty</div>
+        <div class="price-desc">Vícestránkový web, e-shop nebo funkce na míru? Připravíme individuální nabídku přesně podle vašeho zadání.</div>
         <div class="price-row">
-          <span class="price-big">490</span>
-          <span class="price-cur">Kč / měs</span>
+          <span class="price-big">Na míru</span>
         </div>
-        <div class="price-was" aria-hidden="true">&nbsp;</div>
+        <div class="price-plus">nezávazné nacenění zdarma do 48 hodin</div>
         <div class="price-feats">
-          <div class="price-feat"><div class="price-chk">✓</div> Hosting v ceně</div>
-          <div class="price-feat"><div class="price-chk">✓</div> Pravidelné aktualizace</div>
-          <div class="price-feat"><div class="price-chk">✓</div> Technická podpora</div>
-          <div class="price-feat"><div class="price-chk">✓</div> Zálohování dat</div>
-          <div class="price-feat"><div class="price-chk">✓</div> Drobné úpravy obsahu</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Vícestránkové weby a e-shopy</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Rezervační a objednávkové systémy</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Napojení na nástroje, které používáte</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Rozsah i termín podle zadání</div>
+          <div class="price-feat"><div class="price-chk">✓</div> Cena odsouhlasená předem</div>
         </div>
-        <a href="#contact" class="btn btn-out">Mám zájem</a>
+        <a href="#contact" class="btn btn-out">Nezávazně poptat</a>
       </div>
 
     </div>
@@ -1488,25 +1488,26 @@
     resize();
     window.addEventListener('resize', resize);
 
-    const N = 16;
+    const N = 44;
     const parts = [];
     for (let i = 0; i < N; i++) {
       parts.push({
         x: Math.random(), y: Math.random(),
-        r: 1 + Math.random() * 1.5,                  // poloměr 1–2.5 px → průměr 2–5 px
-        o: .2 + Math.random() * .5,                  // opacity .2–.7
-        vx: (Math.random() - .5) * .00012,
-        vy: (Math.random() - .5) * .00010,
+        r: 1.3 + Math.random() * 2.1,                // poloměr 1.3–3.4 px → průměr 2.6–6.8 px
+        o: .35 + Math.random() * .55,                // opacity .35–.9
+        vx: (Math.random() - .5) * .00048,
+        vy: (Math.random() - .5) * .00040,
         a: Math.random() * Math.PI * 2,              // fáze sinusového driftu
         b: Math.random() * Math.PI * 2,
-        s: .0003 + Math.random() * .0005             // rychlost oscilace
+        tw: Math.random() * Math.PI * 2,             // fáze třpytu (twinkle)
+        s: .0006 + Math.random() * .0008             // rychlost oscilace
       });
     }
 
     hero.addEventListener('pointermove', e => {
       const r = hero.getBoundingClientRect();
-      mx = ((e.clientX - r.left) / r.width - .5) * 16;   // max ±8 px
-      my = ((e.clientY - r.top) / r.height - .5) * 16;
+      mx = ((e.clientX - r.left) / r.width - .5) * 44;   // max ±22 px
+      my = ((e.clientY - r.top) / r.height - .5) * 44;
     });
     hero.addEventListener('pointerleave', () => { mx = 0; my = 0; });
 
@@ -1520,19 +1521,22 @@
         p.x = (p.x + p.vx + 1) % 1;
         p.y = (p.y + p.vy + 1) % 1;
         return {
-          x: p.x * W + Math.sin(t * p.s + p.a) * 14 + px,
-          y: p.y * H + Math.cos(t * p.s * .8 + p.b) * 12 + py,
-          r: p.r, o: p.o
+          x: p.x * W + Math.sin(t * p.s + p.a) * 28 + px,
+          y: p.y * H + Math.cos(t * p.s * .8 + p.b) * 24 + py,
+          r: p.r,
+          o: p.o * (.65 + .35 * Math.sin(t * .0016 + p.tw))   // třpyt — pomalé pulzování jasu
         };
       });
 
-      // propojovací linky < 120 px
-      ctx.strokeStyle = 'rgba(245,230,66,.06)';
+      // propojovací linky < 160 px — jas podle vzdálenosti
+      const LINK = 160, LINK2 = LINK * LINK;
       ctx.lineWidth = 1;
       for (let i = 0; i < pos.length; i++) {
         for (let j = i + 1; j < pos.length; j++) {
           const dx = pos[i].x - pos[j].x, dy = pos[i].y - pos[j].y;
-          if (dx * dx + dy * dy < 120 * 120) {
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK2) {
+            ctx.strokeStyle = 'rgba(245,230,66,' + (.22 * (1 - d2 / LINK2)).toFixed(3) + ')';
             ctx.beginPath();
             ctx.moveTo(pos[i].x, pos[i].y);
             ctx.lineTo(pos[j].x, pos[j].y);
@@ -1541,13 +1545,16 @@
         }
       }
 
+      ctx.fillStyle = '#F5E642';
+      ctx.shadowColor = 'rgba(245,230,66,.85)';
+      ctx.shadowBlur = 9;
       for (const p of pos) {
-        ctx.globalAlpha = p.o;
-        ctx.fillStyle = '#F5E642';
+        ctx.globalAlpha = Math.max(p.o, .12);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       }
+      ctx.shadowBlur = 0;
       ctx.globalAlpha = 1;
       raf = requestAnimationFrame(tick);
     }
