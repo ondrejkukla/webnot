@@ -756,6 +756,29 @@
       #stbtn { bottom: 78px; }
     }
 
+    /* ─── COOKIE LIŠTA ─── */
+    .cookie-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 1300;
+      display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;
+      background: rgba(17,17,17,.97);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border2);
+      padding: 18px var(--px) calc(18px + env(safe-area-inset-bottom));
+      transform: translateY(100%);
+      transition: transform .4s var(--ease);
+    }
+    .cookie-bar.vis { transform: none; }
+    .cookie-txt { flex: 1 1 420px; max-width: 640px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .cookie-txt a { color: var(--y); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+    .cookie-btn  { padding: 10px 20px; font-size: 13px; }
+    html.cookie-pending #mcta { display: none !important; }
+    html.cookie-vis #stbtn.vis { bottom: 112px; }
+    @media (max-width: 640px) {
+      .cookie-bar { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-btns { justify-content: center; }
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .two, .proc-layout { gap: 48px; }
@@ -1371,7 +1394,7 @@
             <input type="text" id="f-web" name="website" tabindex="-1" autocomplete="off">
           </div>
           <button type="submit" class="btn btn-y" style="margin-top:4px;">Odeslat zprávu →</button>
-          <p class="form-gdpr">Odesláním souhlasíte se zpracováním údajů za účelem vyřízení poptávky.</p>
+          <p class="form-gdpr">Odesláním souhlasíte se zpracováním údajů za účelem vyřízení poptávky. Více v <a href="./ochrana-osobnich-udaju.html" style="color:var(--muted);text-decoration:underline;">zásadách ochrany osobních údajů</a>.</p>
           <div class="form-ok" id="form-ok" role="status">Děkujeme! Ozveme se do 24 hodin.</div>
           <div class="form-err" id="form-err" role="alert">Vyplňte prosím email a zprávu.</div>
         </form>
@@ -1415,6 +1438,7 @@
       <a href="#pricing">Ceník</a>
       <a href="#reviews">Recenze</a>
       <a href="#contact">Kontakt</a>
+      <a href="./ochrana-osobnich-udaju.html">Ochrana údajů</a>
     </div>
   </div>
 </footer>
@@ -1428,6 +1452,18 @@
 <button id="stbtn" aria-label="Přejít na začátek">
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
+
+<!-- COOKIE LIŠTA -->
+<div class="cookie-bar" id="cookie-bar" role="dialog" aria-live="polite" aria-label="Souhlas s cookies">
+  <p class="cookie-txt">
+    Používáme cookies a měřicí skripty (Google Tag Manager, Microsoft Clarity, chat Smartsupp), které nám pomáhají vylepšovat web. Bez vašeho souhlasu nic neodesíláme.
+    <a href="./ochrana-osobnich-udaju.html#cookies">Více informací</a>.
+  </p>
+  <div class="cookie-btns">
+    <button type="button" class="btn btn-gh cookie-btn" id="cookie-reject">Odmítnout</button>
+    <button type="button" class="btn btn-y cookie-btn" id="cookie-accept">Přijmout</button>
+  </div>
+</div>
 
 <script>
   const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1689,6 +1725,51 @@
       if (dismissed) return;
       bar.classList.toggle('vis', hero.getBoundingClientRect().bottom < 0);
     }, { passive: true });
+  })();
+
+  /* ─── COOKIE SOUHLAS ─── */
+  (function () {
+    const KEY  = 'wn_cookie_consent';
+    const html = document.documentElement;
+    const bar  = document.getElementById('cookie-bar');
+
+    // TODO: analytika (GTM / Clarity / Smartsupp) zatím NENÍ zapnutá — doplnit skutečná ID níže a odkomentovat
+    function loadAnalytics() {
+      // TODO: doplnit skutečná ID a odkomentovat, až budou služby zprovozněné
+
+      // Google Tag Manager
+      // (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');
+
+      // Microsoft Clarity
+      // (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","XXXXXXXXXX");
+
+      // Smartsupp
+      // window.smartsupp||(function(d){var s,c,o=smartsupp=function(){o._.push(arguments)};o._=[];s=d.getElementsByTagName('script')[0];c=d.createElement('script');c.type='text/javascript';c.charset='utf-8';c.async=true;c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);})(document);
+      // window._smartsupp = window._smartsupp || {}; window._smartsupp.key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    }
+
+    function hide() {
+      bar.classList.remove('vis');
+      html.classList.remove('cookie-pending', 'cookie-vis');
+    }
+
+    const consent = localStorage.getItem(KEY);
+    if (consent === 'accepted') {
+      loadAnalytics();
+    } else if (consent !== 'rejected') {
+      html.classList.add('cookie-pending', 'cookie-vis');
+      requestAnimationFrame(() => bar.classList.add('vis'));
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', () => {
+      localStorage.setItem(KEY, 'accepted');
+      hide();
+      loadAnalytics();
+    });
+    document.getElementById('cookie-reject').addEventListener('click', () => {
+      localStorage.setItem(KEY, 'rejected');
+      hide();
+    });
   })();
 
   /* ─── SMOOTH SCROLL ─── */
